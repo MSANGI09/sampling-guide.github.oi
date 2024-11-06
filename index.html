@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Msangijr's Sampling Guide</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-container {
+      max-width: 800px;
+      margin: auto;
+      display: flex;
+    
+      align-items: center;
+    }
+
+    .navbar h1 {
+      font-size: 24px;
+      margin-left: 10px;
+    }
+
+    .navbar-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    .navbar a:hover {
+      background-color: #45a049;
+      border-radius: 5px;
+    }
+
+    /* Mobile Navbar */
+    @media (max-width: 600px) {
+      .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+      .navbar-menu.active {
+        display: flex;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+    }
+
+    /* Container and Card Styling */
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid #4CAF50;
+      transition: box-shadow 0.3s;
+      
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    h1, h2 {
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      
+      
+    }
+
+    /* Calculator Section */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"], select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      transition: border 0.3s;
+    }
+
+    input[type="number"]:focus, select:focus {
+      border: 1px solid #4CAF50;
+      outline: none;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e8f5e9;
+      border-left: 5px solid #4CAF50;
+      border-radius: 5px;
+      
+    }
+
+
+    
+    /* CSS */
+.contact-card {
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.contact-card h2 {
+  color: #333;
+}
+
+.contact-info p {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: #555;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.social-icons a i {
+  margin-right: 8px;
+}
+
+.social-icons a:hover {
+  color: #000;
+}
+
+/* Specific Social Media Colors */
+.social-icons a[href*="instagram"] i { color: #E1306C; }  /* Instagram color */
+.social-icons a[href*="facebook"] i { color: #4267B2; }   /* Facebook color */
+.social-icons a[href*="whatsapp"] i { color: #25D366; }   /* WhatsApp color */
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-container">
+      <h1>Msangijr's Guide</h1>
+      <div class="navbar-toggle" onclick="toggleMenu()">☰</div>
+      <div class="navbar-menu">
+        <a href="#home">Home</a>
+        <a href="#types">Sampling Types</a>
+        <a href="#select-sample">Good Sample</a>
+        <a href="#calculator">Calculator</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Home Section -->
+    <section id="home" class="card">
+      <h1>Welcome to Msangijr's Sampling Guide</h1>
+<p style="text-align: justify; text-align-last: justify; hyphens: auto; word-spacing: -1px;">
+    Msangijr is a skilled statistician and data scientist with a passion for helping others understand the fundamentals of sampling and data analysis. With high experience in statistical methodologies, data visualization, and statistical modeling, Msangijr is dedicated to providing insights that empower better decisio-making 
+
+    </section>
+
+    <!-- Types of Sampling Section -->
+    <section id="types" class="card">
+      <h2>Types of Sampling</h2>
+      <p  style="text-align: justify; text-align-last: justify; hyphens: auto; word-spacing: -1px
+      
+      "><strong>Random Sampling:</strong> Every member of the population has an equal chance of being selected.</p>
+      <p style="text-align: justify; text-align-last: justify; hyphens: auto; word-spacing: -1px
+      
+      "><strong>Stratified Sampling:</strong> The population is divided into subgroups (strata) that share similar characteristics.</p>
+      <p style="text-align: justify; text-align-last: justify; hyphens: auto; word-spacing: -1px
+      
+      "><strong>Systematic Sampling:</strong> Every nth member of the population is selected after a random starting point.</p>
+      <p style="text-align: justify; text-align-last: justify; hyphens: auto; word-spacing: -1px
+      
+      "><strong>Cluster Sampling:</strong> The population is divided into clusters, and a few clusters are chosen at random to represent the population.</p>
+    </section>
+
+    <!-- Selecting a Good Sample Section -->
+    <section id="select-sample" class="card">
+      <h2>How to Select a Good Sample</h2>
+      <p>1. Ensure your sample represents the population.</p>
+      <p>2. Use randomization to eliminate bias.</p>
+      <p>3. Consider the size of the sample – larger samples provide more accuracy.</p>
+      <p>4. Make sure your sample covers all relevant subgroups.</p>
+    </section>
+
+    <!-- Sample Size Calculator Section -->
+    <section id="calculator" class="card">
+      <h2>Sample Size Calculator</h2>
+      <div class="form-group">
+        <label for="population-type">Population Type:</label>
+        <select id="population-type" onchange="togglePopulationInput()">
+          <option value="finite">Finite Population</option>
+          <option value="infinite">Infinite Population</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="population">Population Size (for finite only):</label>
+        <input type="number" id="population" placeholder="Enter population size" min="1">
+      </div>
+      <div class="form-group">
+        <label for="confidence">Confidence Level:</label>
+        <select id="confidence">
+          <option value="1.96">95%</option>
+          <option value="2.576">99%</option>
+          <option value="1.645">90%</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="margin">Margin of Error (in %):</label>
+        <input type="number" id="margin" placeholder="Enter margin of error" min="1" max="100">
+      </div>
+      <button onclick="calculateSampleSize()">Calculate Sample Size</button>
+
+      <!-- Result Display -->
+      <div id="result" style="display: none;"></div>
+    </section>
+
+
+
+    <section id="select-sample" class="card">
+    
+      <div id="result" style="display:block;">
+        <!-- HTML -->
+<div class="contact-card">
+  <h2>Contact Me</h2>
+  <div class="contact-info">
+    <p><strong>Email:</strong> msangijulius19@gmail.com</p>
+    <p><strong>Phone:</strong> +255 710 989 258</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/msangi4229/profilecard/?igsh=YmczN251MTB2MTJo" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="https://www.facebook.com/julius.msangi.758" target="_blank">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="https://wa.me/255710989258?text=Hello%MSAGIJR%20MSANGIJR%20Can%20i%20get%20 more %20information %20About %20this %20 ?" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+        
+      </div>
+  
+    </section>
+       
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+ 
+
+
+
+
+
+
+  <script>
+    // Toggle Mobile Menu
+    function toggleMenu() {
+      document.querySelector('.navbar-menu').classList.toggle('active');
+    }
+
+    // Smooth Scroll for Navbar Links
+    document.querySelectorAll('.navbar a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        toggleMenu(); // Close menu on mobile after selection
+      });
+    });
+
+    // Toggle population input based on population type selection
+    function togglePopulationInput() {
+      const populationType = document.getElementById('population-type').value;
+      const populationInput = document.getElementById('population');
+
+      if (populationType === 'infinite') {
+        populationInput.disabled = true;
+        populationInput.value = '';
+    
+        
+        
+        // Clear the input when set to infinite
+      } else {
+        populationInput.disabled = false;
+        
+      }
+    }
+
+    // Sample Size Calculator Function
+    function calculateSampleSize() {
+      const populationType = document.getElementById('population-type').value;
+      const population = document.getElementById('population').value;
+      const confidence = parseFloat(document.getElementById('confidence').value);
+      const margin = document.getElementById('margin').value / 100;
+
+      if (!margin || (populationType === "finite" && !population)) {
+        alert("Please enter all required values.");
+        return;
+      }
+
+      const z = confidence;
+      const p = 0.5; // Estimated proportion
+      let sampleSize;
+
+      if (populationType === "infinite") {
+        // Infinite population formula
+        sampleSize = Math.round((Math.pow(z, 2) * p * (1 - p)) / Math.pow(margin, 2));
+      } else {
+        // Finite population formula
+        const numerator = (Math.pow(z, 2) * p * (1 - p)) / Math.pow(margin, 2);
+        const denominator = 1 + ((Math.pow(z, 2) * p * (1 - p)) / (Math.pow(margin, 2) * population));
+        sampleSize = Math.round(numerator / denominator);
+      }
+
+      // Display the result
+      const resultDiv = document.getElementById('result');
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = `<strong>Recommended Sample Size:</strong> ${sampleSize}`;
+    }
+
+    // Initialize population input on page load
+    window.onload = togglePopulationInput;
+  </script>
+</body>
+</html>
