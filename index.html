@@ -360,44 +360,38 @@
 
 
 
-  <script>
-    // Toggle Mobile Menu
-    function toggleMenu() {
-      document.querySelector('.navbar-menu').classList.toggle('active');
-    }
+ // Toggle Mobile Menu
+function toggleMenu() {
+    document.querySelector('.navbar-menu').classList.toggle('active');
+}
 
-    // Smooth Scroll for Navbar Links
-    document.querySelectorAll('.navbar a').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+// Smooth Scroll for Navbar Links
+document.querySelectorAll('.navbar a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+            behavior: 'smooth'
         });
         toggleMenu(); // Close menu on mobile after selection
-      });
     });
+});
 
-    // Toggle population input based on population type selection
-    function togglePopulationInput() {
-      const populationType = document.getElementById('population-type').value;
-      const populationInput = document.getElementById('population');
+// Toggle population input based on population type selection
+function togglePopulationInput() {
+    const populationType = document.getElementById('population-type').value;
+    const populationInput = document.getElementById('population');
 
-      if (populationType === 'infinite') {
+    if (populationType === 'infinite') {
         populationInput.disabled = true;
-        populationInput.value = '';
-    
-        
-        
-        // Clear the input when set to infinite
-      } else {
+        populationInput.value = ''; // Clear input when infinite is selected
+    } else {
         populationInput.disabled = false;
-        
-      }
     }
+}
 
-  // Function to get Z-score based on confidence level
+// Function to get Z-score based on confidence level
 function getZScore(confidenceLevel) {
-    switch (confidenceLevel) {
+    switch (parseInt(confidenceLevel)) {
         case 90: return 1.645;
         case 95: return 1.96;
         case 99: return 2.576;
@@ -408,12 +402,13 @@ function getZScore(confidenceLevel) {
 // Sample Size Calculator Function
 function calculateSampleSize() {
     const populationType = document.getElementById('population-type').value;
-    const population = parseFloat(document.getElementById('population').value);
-    const confidenceLevel = parseFloat(document.getElementById('confidence').value);
-    const margin = parseFloat(document.getElementById('margin').value) / 100;
+    const population = parseFloat(document.getElementById('population').value) || 0;
+    const confidenceLevel = parseInt(document.getElementById('confidence').value) || 95;
+    const margin = parseFloat(document.getElementById('margin').value) / 100 || 0.05;
 
-    if (!margin || (populationType === "finite" && (!population || population <= 0))) {
-        alert("Please enter all required values correctly.");
+    // Check if inputs are valid
+    if (margin <= 0 || margin >= 1 || (populationType === "finite" && population <= 0)) {
+        alert("Please enter valid values for all fields.");
         return;
     }
 
@@ -431,6 +426,14 @@ function calculateSampleSize() {
         sampleSize = Math.round(numerator / denominator);
     }
 
+    // Debugging: Log calculations
+    console.log("Population Type:", populationType);
+    console.log("Population:", population);
+    console.log("Confidence Level:", confidenceLevel);
+    console.log("Margin of Error:", margin);
+    console.log("Z-score:", z);
+    console.log("Calculated Sample Size:", sampleSize);
+
     // Display the result
     const resultDiv = document.getElementById('result');
     resultDiv.style.display = 'block';
@@ -439,6 +442,7 @@ function calculateSampleSize() {
 
 // Initialize population input on page load
 window.onload = togglePopulationInput;
+
 
   </script>
 </body>
