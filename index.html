@@ -405,40 +405,51 @@
       }
     }
 
-    // Sample Size Calculator Function
-    function calculateSampleSize() {
-      const populationType = document.getElementById('population-type').value;
-      const population = document.getElementById('population').value;
-      const confidence = parseFloat(document.getElementById('confidence').value);
-      const margin = document.getElementById('margin').value / 100;
+  // Function to get Z-score based on confidence level
+function getZScore(confidenceLevel) {
+    switch (confidenceLevel) {
+        case 90: return 1.645;
+        case 95: return 1.96;
+        case 99: return 2.576;
+        default: return 1.96; // Default to 95% if invalid input
+    }
+}
 
-      if (!margin || (populationType === "finite" && !population)) {
-        alert("Please enter all required values.");
+// Sample Size Calculator Function
+function calculateSampleSize() {
+    const populationType = document.getElementById('population-type').value;
+    const population = parseFloat(document.getElementById('population').value);
+    const confidenceLevel = parseFloat(document.getElementById('confidence').value);
+    const margin = parseFloat(document.getElementById('margin').value) / 100;
+
+    if (!margin || (populationType === "finite" && (!population || population <= 0))) {
+        alert("Please enter all required values correctly.");
         return;
-      }
-
-      const z = confidence;
-      const p = 0.5; // Estimated proportion
-      let sampleSize;
-
-      if (populationType === "infinite") {
-        // Infinite population formula
-        sampleSize = Math.round((Math.pow(z, 2) * p * (1 - p)) / Math.pow(margin, 2));
-      } else {
-        // Finite population formula
-        const numerator = (Math.pow(z, 2) * p * (1 - p)) / Math.pow(margin, 2);
-        const denominator = 1 + ((Math.pow(z, 2) * p * (1 - p)) / (Math.pow(margin, 2) * population));
-        sampleSize = Math.round(numerator / denominator);
-      }
-
-      // Display the result
-      const resultDiv = document.getElementById('result');
-      resultDiv.style.display = 'block';
-      resultDiv.innerHTML = `<strong>Recommended Sample Size:</strong> ${sampleSize}`;
     }
 
-    // Initialize population input on page load
-    window.onload = togglePopulationInput;
+    const z = getZScore(confidenceLevel); // Get correct Z-score
+    const p = 0.5; // Estimated proportion (worst case scenario)
+    let sampleSize;
+
+    if (populationType === "infinite") {
+        // Infinite population formula
+        sampleSize = Math.round((Math.pow(z, 2) * p * (1 - p)) / Math.pow(margin, 2));
+    } else {
+        // Finite population formula
+        const numerator = (Math.pow(z, 2) * p * (1 - p)) / Math.pow(margin, 2);
+        const denominator = 1 + (numerator / population);
+        sampleSize = Math.round(numerator / denominator);
+    }
+
+    // Display the result
+    const resultDiv = document.getElementById('result');
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = `<strong>Recommended Sample Size:</strong> ${sampleSize}`;
+}
+
+// Initialize population input on page load
+window.onload = togglePopulationInput;
+
   </script>
 </body>
 </html>
