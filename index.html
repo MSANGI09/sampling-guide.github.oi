@@ -1,534 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Msangijr's Sampling Guide</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome for social icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    :root {
-      --primary-color: #4CAF50;
-      --primary-dark: #45a049;
-      --primary-light: #e8f5e9;
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      padding-top: 56px;
-    }
-    
-    .navbar {
-      background-color: var(--primary-color) !important;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    .navbar-brand {
-      font-weight: bold;
-      color: white !important;
-    }
-    
-    .nav-link {
-      color: rgba(255, 255, 255, 0.9) !important;
-      font-weight: 500;
-    }
-    
-    .nav-link:hover, .nav-link:focus {
-      color: white !important;
-      background-color: var(--primary-dark);
-      border-radius: 5px;
-    }
-    
-    .custom-card {
-      border-left: 5px solid var(--primary-color);
-      transition: all 0.3s;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .custom-card:hover {
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-      transform: translateY(-2px);
-    }
-    
-    h1, h2, h3 {
-      color: var(--primary-color);
-    }
-    
-    .btn-primary {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-    }
-    
-    .btn-primary:hover, .btn-primary:focus {
-      background-color: var(--primary-dark);
-      border-color: var(--primary-dark);
-    }
-    
-    .result-box {
-      background-color: var(--primary-light);
-      border-left: 5px solid var(--primary-color);
-      padding: 15px;
-      border-radius: 5px;
-    }
-    
-    .contact-card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center;
-    }
-    
-    .social-icons {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 15px;
-    }
-    
-    .social-icons a {
-      text-decoration: none;
-      color: #555;
-      transition: all 0.3s;
-      padding: 8px 12px;
-      border-radius: 5px;
-    }
-    
-    .social-icons a:hover {
-      background-color: #f8f9fa;
-      transform: translateY(-2px);
-    }
-    
-    .social-icons a i {
-      margin-right: 8px;
-    }
-    
-    .fa-instagram { color: #E1306C; }
-    .fa-facebook { color: #4267B2; }
-    .fa-whatsapp { color: #25D366; }
-    
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--primary-color);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: all 0.3s;
-      z-index: 1000;
-      text-decoration: none;
-    }
-    
-    .back-to-top.show {
-      opacity: 1;
-    }
-    
-    .back-to-top:hover {
-      background-color: var(--primary-dark);
-      color: white;
-    }
-    
-    .text-justify {
-      text-align: justify;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanzania Savings Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .calculator-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .result-box {
+            background-color: #f1f8ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .table-container {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+        .header-image {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/800/200');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 30px;
+            border-radius: 8px 8px 0 0;
+            margin: -20px -20px 20px -20px;
+        }
+        .header-image h1 {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .instructions {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .developer-info {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#home">Msangijr's Guide</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#types">Sampling Types</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#select-sample">Good Sample</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#margin-of-error">Margin of Error</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#calculator">Calculator</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container my-4">
-    <!-- Home Section -->
-    <section id="home" class="py-5">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h1 class="card-title">Welcome to Msangijr's Sampling Guide</h1>
-          <p class="card-text text-justify">
-            Msangijr is a skilled statistician and data scientist with a passion for helping others understand the fundamentals of sampling and data analysis. With high experience in statistical methodologies, data visualization, and statistical modeling, Msangijr is dedicated to providing insights that empower better decision-making.
-          </p>
+    <div class="container calculator-container">
+        <div class="header-image">
+            <h1 class="text-center">Tanzania Savings Calculator</h1>
+            <p class="text-center mb-0">Plan your financial future with TZS savings projections</p>
         </div>
-      </div>
-    </section>
 
-    <!-- Types of Sampling Section -->
-    <section id="types" class="py-5">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h2 class="card-title">Types of Sampling</h2>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Random Sampling</h5>
-                  <p class="card-text text-justify">Every member of the population has an equal chance of being selected. This method is simple but ensures unbiased representation.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Stratified Sampling</h5>
-                  <p class="card-text text-justify">The population is divided into subgroups (strata) that share similar characteristics, and samples are taken from each stratum proportionally.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Systematic Sampling</h5>
-                  <p class="card-text text-justify">Every nth member of the population is selected after a random starting point. This creates an evenly distributed sample.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Cluster Sampling</h5>
-                  <p class="card-text text-justify">The population is divided into clusters, and a few clusters are chosen at random to represent the entire population.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="instructions">
+            <h4>How to Use This Calculator</h4>
+            <p>This simple yet powerful tool helps you visualize how your savings will grow over time without relying on interest. Follow these steps:</p>
+            <ol>
+                <li><strong>Initial Amount:</strong> Enter any money you've already saved (in TZS). If you're starting from zero, leave this as 0.</li>
+                <li><strong>Regular Savings Amount:</strong> Enter how much you plan to save each period (in TZS).</li>
+                <li><strong>Saving Frequency:</strong> Choose whether you'll save daily, weekly, or monthly. This affects how quickly your savings will accumulate.</li>
+                <li><strong>Time Frame:</strong> Use the slider to set how many years you want to plan for (between 1-30 years).</li>
+                <li><strong>Calculate:</strong> Click the blue "Calculate" button to see your projected savings.</li>
+            </ol>
+            <p>After calculating, you'll see:</p>
+            <ul>
+                <li>A summary of your total savings</li>
+                <li>Weekly breakdown for the first year</li>
+                <li>Monthly highlights throughout your savings period</li>
+                <li>Yearly summaries for long-term planning</li>
+            </ul>
+            <p>Use the "Show/Hide Details" button to view or hide the detailed breakdown table.</p>
         </div>
-      </div>
-    </section>
 
-    <!-- Selecting a Good Sample Section -->
-    <section id="select-sample" class="py-5">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h2 class="card-title">How to Select a Good Sample</h2>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <div class="card h-100 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Representation</h5>
-                  <p class="card-text">Ensure your sample accurately reflects the key characteristics of the population you're studying.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <div class="card h-100 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Randomization</h5>
-                  <p class="card-text">Use randomization techniques to eliminate selection bias and ensure each member has an equal chance.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <div class="card h-100 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Sample Size</h5>
-                  <p class="card-text">Consider the appropriate sample size – larger samples generally provide more accuracy but require more resources.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <div class="card h-100 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Coverage</h5>
-                  <p class="card-text">Make sure your sample covers all relevant subgroups to avoid under-representation of important segments.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Margin of Error Section -->
-    <section id="margin-of-error" class="py-5">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h2 class="card-title">Understanding Margin of Error and Confidence Levels</h2>
-          <div class="accordion" id="errorAccordion">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Margin of Error
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#errorAccordion">
-                <div class="accordion-body text-justify">
-                  The margin of error (MoE) represents the range within which the true value of the population is expected to lie, at a given specific level of confidence. For example, a 5% margin of error means that the sample results could vary by up to 5% above or below the actual population value. Smaller margins of error lead to more precise results but may require a larger sample size.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Selecting the Best Margin of Error
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#errorAccordion">
-                <div class="accordion-body text-justify">
-                  The best margin of error depends on the level of precision you need. For exploratory studies, a larger MoE (e.g., 10%) may suffice. For high-stakes studies (e.g., policy decisions), a smaller MoE (e.g., 1-3%) is often preferred. Smaller margins require larger sample sizes, which can impact cost and feasibility.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Confidence Levels
-                </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#errorAccordion">
-                <div class="accordion-body text-justify">
-                  Confidence level indicates the probability that the margin of error contains the true population value. Common confidence levels are 90%, 95%, and 99%. Higher confidence levels provide greater assurance but also lead to larger sample sizes. For most general research, a 95% confidence level is standard, balancing accuracy and practicality.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sample Size Calculator Section -->
-    <section id="calculator" class="py-5">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h2 class="card-title">Sample Size Calculator</h2>
-          <form id="sampleSizeForm">
-            <div class="mb-3">
-              <label for="population-type" class="form-label">Population Type:</label>
-              <select class="form-select" id="population-type" onchange="togglePopulationInput()">
-                <option value="finite">Finite Population</option>
-                <option value="infinite">Infinite Population</option>
-              </select>
-            </div>
-            <div class="mb-3" id="population-container">
-              <label for="population" class="form-label">Population Size (for finite only):</label>
-              <input type="number" class="form-control" id="population" placeholder="Enter population size" min="1">
-            </div>
-            <div class="mb-3">
-              <label for="confidence" class="form-label">Confidence Level:</label>
-              <select class="form-select" id="confidence">
-                <option value="95">95%</option>
-                <option value="99">99%</option>
-                <option value="90">90%</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label for="margin" class="form-label">Margin of Error (in %):</label>
-              <input type="number" class="form-control" id="margin" placeholder="Enter margin of error" min="0.1" max="20" step="0.1">
-              <div class="form-text">Recommended: 3-5% for most studies</div>
-            </div>
-            <div class="mb-3">
-              <label for="proportion" class="form-label">Expected Proportion (in %):</label>
-              <input type="number" class="form-control" id="proportion" placeholder="50% if unknown" min="1" max="99" value="50">
-              <div class="form-text">Use 50% if uncertain (most conservative estimate)</div>
-            </div>
-            <button type="button" class="btn btn-primary w-100" onclick="calculateSampleSize()">Calculate Sample Size</button>
-          </form>
-
-          <!-- Result Display -->
-          <div id="result" class="mt-4 result-box" style="display: none;"></div>
-          <div id="explanation" class="mt-3" style="display: none;">
-            <h5>How This Calculation Works:</h5>
-            <p class="text-justify">The sample size is calculated using standard statistical formulas. For infinite populations, we use the formula: n = (Z²×p×(1-p))/e², where Z is the Z-score for the confidence level, p is the expected proportion, and e is the margin of error. For finite populations, we apply a correction factor to avoid oversampling from small populations.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h2 class="card-title text-center mb-4">Contact Me</h2>
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="contact-card">
-                <div class="mb-4">
-                  <h4><i class="fas fa-user me-2"></i>Julius Msangi</h4>
-                  <p class="text-muted">Statistician & Data Scientist</p>
-                </div>
-                <div class="contact-info mb-4">
-                  <p><i class="fas fa-envelope me-2"></i>msangijulius19@gmail.com</p>
-                  <p><i class="fas fa-phone me-2"></i>+255 710 989 258</p>
-                </div>
-                <div class="social-icons">
-                  <a href="https://www.instagram.com/msangi4229/profilecard/?igsh=YmczN251MTB2MTJo" target="_blank" class="d-flex align-items-center">
-                    <i class="fab fa-instagram"></i> Instagram
-                  </a>
-                  <a href="https://www.facebook.com/julius.msangi.758" target="_blank" class="d-flex align-items-center">
-                    <i class="fab fa-facebook"></i> Facebook
-                  </a>
-                  <a href="https://wa.me/255710989258?text=Hello%20MSAGIJR%20%20Can%20I%20get%20more%20information%20About%20this%20" target="_blank" class="d-flex align-items-center">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- Back to Top Button -->
-  <a href="#" class="back-to-top" id="backToTop">
-    <i class="fas fa-arrow-up"></i>
-  </a>
-
-  <!-- Bootstrap JS Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom JavaScript -->
-  <script>
-    // Toggle population input based on population type selection
-    function togglePopulationInput() {
-      const populationType = document.getElementById('population-type').value;
-      const populationContainer = document.getElementById('population-container');
-      const populationInput = document.getElementById('population');
-
-      if (populationType === 'infinite') {
-        populationContainer.style.display = 'none';
-        populationInput.value = '';
-      } else {
-        populationContainer.style.display = 'block';
-      }
-    }
-
-    // Function to get Z-score based on confidence level
-    function getZScore(confidenceLevel) {
-      switch (parseInt(confidenceLevel)) {
-        case 90: return 1.645;
-        case 95: return 1.96;
-        case 99: return 2.576;
-        default: return 1.96; // Default to 95% if invalid input
-      }
-    }
-
-    // Sample Size Calculator Function (Corrected)
-    function calculateSampleSize() {
-      const populationType = document.getElementById('population-type').value;
-      const populationSize = parseFloat(document.getElementById('population').value);
-      const confidenceLevel = parseInt(document.getElementById('confidence').value);
-      const marginOfError = parseFloat(document.getElementById('margin').value) / 100;
-      const proportion = parseFloat(document.getElementById('proportion').value) / 100;
-
-      // Validate inputs
-      if ((populationType === "finite" && (isNaN(populationSize) || populationSize <= 0)) || 
-          isNaN(marginOfError) || marginOfError <= 0 || marginOfError >= 1 ||
-          isNaN(proportion) || proportion <= 0 || proportion >= 1) {
-        alert("Please enter valid values for all fields.");
-        return;
-      }
-
-      const z = getZScore(confidenceLevel);
-      let sampleSize;
-
-      // Calculate sample size
-      if (populationType === "infinite") {
-        // Formula for infinite population
-        sampleSize = Math.ceil((Math.pow(z, 2) * proportion * (1 - proportion)) / Math.pow(marginOfError, 2));
-      } else {
-        // Formula for finite population with correction factor
-        const numerator = Math.pow(z, 2) * proportion * (1 - proportion) * populationSize;
-        const denominator = Math.pow(marginOfError, 2) * (populationSize - 1) + Math.pow(z, 2) * proportion * (1 - proportion);
-        sampleSize = Math.ceil(numerator / denominator);
-      }
-
-      // Display the result
-      const resultDiv = document.getElementById('result');
-      const explanationDiv = document.getElementById('explanation');
-      
-      resultDiv.style.display = 'block';
-      explanationDiv.style.display = 'block';
-      
-      resultDiv.innerHTML = `
-        <h4 class="mb-3">Results</h4>
         <div class="row">
-          <div class="col-md-6">
-            <p><strong>Recommended Sample Size:</strong> ${sampleSize}</p>
-            <p><strong>Confidence Level:</strong> ${confidenceLevel}%</p>
-          </div>
-          <div class="col-md-6">
-            <p><strong>Margin of Error:</strong> ±${(marginOfError * 100).toFixed(1)}%</p>
-            <p><strong>Population Type:</strong> ${populationType === 'finite' ? 'Finite (Size: ' + populationSize + ')' : 'Infinite'}</p>
-          </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Savings Input</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="savingsForm">
+                            <div class="mb-3">
+                                <label for="initialAmount" class="form-label">Initial Amount (TZS)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">TZS</span>
+                                    <input type="number" class="form-control" id="initialAmount" min="0" value="0">
+                                </div>
+                                <small class="text-muted">Any money you've already saved</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="regularSaving" class="form-label">Regular Savings Amount (TZS)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">TZS</span>
+                                    <input type="number" class="form-control" id="regularSaving" min="0" value="10000">
+                                </div>
+                                <small class="text-muted">How much you'll save each period</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="savingFrequency" class="form-label">Saving Frequency</label>
+                                <select class="form-select" id="savingFrequency">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                                <small class="text-muted">How often you'll add to your savings</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="timeFrame" class="form-label">Time Frame (Years)</label>
+                                <input type="range" class="form-range" id="timeFrame" min="1" max="30" value="5">
+                                <div class="d-flex justify-content-between">
+                                    <span>1</span>
+                                    <span id="timeFrameValue">5</span>
+                                    <span>30</span>
+                                </div>
+                                <small class="text-muted">How long you'll continue saving</small>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100">Calculate</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Results Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="summaryResults">
+                            <p class="text-center text-muted mb-4">Complete the form and click Calculate to see your savings projections</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Savings Over Time</h5>
+                        <button class="btn btn-sm btn-light" id="toggleTable">Show/Hide Details</button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-container" id="tableContainer" style="display: none;">
+                            <table class="table table-striped table-hover mb-0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Period</th>
+                                        <th>Total Saved</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultsTable">
+                                    <!-- Results will be inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="developer-info mt-4">
+                    <p class="mb-0"><strong>Developed by:</strong> MSANGI JR, Mathematician and Statistician</p>
+                    <p class="mb-0"><small>A mathematical approach to financial planning in Tanzania</small></p>
+                </div>
+            </div>
         </div>
-      `;
-    }
 
-    // Back to Top Button
-    window.addEventListener('scroll', function() {
-      const backToTopButton = document.getElementById('backToTop');
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('show');
-      } else {
-        backToTopButton.classList.remove('show');
-      }
-    });
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">Tips for Effective Saving</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Short-term Saving (1-2 years)</h6>
+                                <ul>
+                                    <li>Set weekly savings targets for best results</li>
+                                    <li>Start with a small amount and gradually increase</li>
+                                    <li>Review your progress monthly to stay motivated</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Long-term Saving (5+ years)</h6>
+                                <ul>
+                                    <li>Consistent monthly contributions work best</li>
+                                    <li>Set up automatic transfers on payday if possible</li>
+                                    <li>Review your savings plan annually</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    document.getElementById('backToTop').addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        document.querySelector(targetId).scrollIntoView({
-          behavior: 'smooth'
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update timeFrame value display
+            const timeFrameInput = document.getElementById('timeFrame');
+            const timeFrameValue = document.getElementById('timeFrameValue');
+            
+            timeFrameInput.addEventListener('input', function() {
+                timeFrameValue.textContent = this.value;
+            });
+            
+            // Toggle table visibility
+            const toggleTableBtn = document.getElementById('toggleTable');
+            const tableContainer = document.getElementById('tableContainer');
+            
+            toggleTableBtn.addEventListener('click', function() {
+                if (tableContainer.style.display === 'none') {
+                    tableContainer.style.display = 'block';
+                } else {
+                    tableContainer.style.display = 'none';
+                }
+            });
+            
+            // Form submission
+            const savingsForm = document.getElementById('savingsForm');
+            
+            savingsForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                calculateSavings();
+            });
+            
+            // Calculate savings function
+            function calculateSavings() {
+                // Get input values
+                const initialAmount = parseFloat(document.getElementById('initialAmount').value) || 0;
+                const regularSaving = parseFloat(document.getElementById('regularSaving').value) || 0;
+                const savingFrequency = document.getElementById('savingFrequency').value;
+                const timeFrameYears = parseInt(document.getElementById('timeFrame').value);
+                
+                // Calculate frequency multiplier
+                let periodsPerYear;
+                let frequencyText;
+                
+                switch(savingFrequency) {
+                    case 'daily':
+                        periodsPerYear = 365;
+                        frequencyText = 'Daily';
+                        break;
+                    case 'weekly':
+                        periodsPerYear = 52;
+                        frequencyText = 'Weekly';
+                        break;
+                    case 'monthly':
+                        periodsPerYear = 12;
+                        frequencyText = 'Monthly';
+                        break;
+                    default:
+                        periodsPerYear = 12;
+                        frequencyText = 'Monthly';
+                }
+                
+                const totalPeriods = timeFrameYears * periodsPerYear;
+                
+                // Calculate savings growth
+                let totalSavings = initialAmount;
+                
+                const weeklyResults = [];
+                const monthlyResults = [];
+                const yearlyResults = [];
+                
+                // Calculate for each period
+                for (let period = 1; period <= totalPeriods; period++) {
+                    // Add regular saving
+                    totalSavings += regularSaving;
+                    
+                    // Store results at specific intervals
+                    const currentWeek = Math.ceil(period / (periodsPerYear / 52));
+                    const currentMonth = Math.ceil(period / (periodsPerYear / 12));
+                    const currentYear = Math.ceil(period / periodsPerYear);
+                    
+                    // Weekly results (for the first year only)
+                    if (currentYear === 1 && period % (periodsPerYear / 52) === 0) {
+                        weeklyResults.push({
+                            period: `Week ${currentWeek}`,
+                            total: totalSavings
+                        });
+                    }
+                    
+                    // Monthly results
+                    if (period % (periodsPerYear / 12) === 0) {
+                        monthlyResults.push({
+                            period: `Month ${currentMonth}`,
+                            total: totalSavings
+                        });
+                    }
+                    
+                    // Yearly results
+                    if (period % periodsPerYear === 0) {
+                        yearlyResults.push({
+                            period: `Year ${currentYear}`,
+                            total: totalSavings
+                        });
+                    }
+                }
+                
+                // Display summary results
+                const summaryResults = document.getElementById('summaryResults');
+                summaryResults.innerHTML = `
+                    <div class="result-box mb-3">
+                        <h4 class="mb-3 text-primary">Final Amount: TZS ${formatNumber(totalSavings.toFixed(0))}</h4>
+                        <div class="d-flex justify-content-between">
+                            <div>Initial amount:</div>
+                            <div class="fw-bold">TZS ${formatNumber(initialAmount.toFixed(0))}</div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div>Total saved:</div>
+                            <div class="fw-bold text-success">TZS ${formatNumber((totalSavings - initialAmount).toFixed(0))}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <div>${frequencyText} savings:</div>
+                        <div>TZS ${formatNumber(regularSaving)}</div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div>Time frame:</div>
+                        <div>${timeFrameYears} years</div>
+                    </div>
+                `;
+                
+                // Display detailed results in table
+                const resultsTable = document.getElementById('resultsTable');
+                resultsTable.innerHTML = '';
+                
+                // Weekly results (first year)
+                if (weeklyResults.length > 0) {
+                    addSectionHeader(resultsTable, 'Weekly (First Year)');
+                    weeklyResults.forEach(result => {
+                        addResultRow(resultsTable, result);
+                    });
+                }
+                
+                // Monthly results (show first year and first month of each year)
+                if (monthlyResults.length > 0) {
+                    addSectionHeader(resultsTable, 'Monthly Highlights');
+                    
+                    // First year months
+                    for (let i = 0; i < Math.min(12, monthlyResults.length); i++) {
+                        addResultRow(resultsTable, monthlyResults[i]);
+                    }
+                    
+                    // First month of subsequent years
+                    for (let i = 12; i < monthlyResults.length; i += 12) {
+                        if (i < monthlyResults.length) {
+                            addResultRow(resultsTable, monthlyResults[i]);
+                        }
+                    }
+                }
+                
+                // Yearly results
+                if (yearlyResults.length > 0) {
+                    addSectionHeader(resultsTable, 'Yearly Summary');
+                    yearlyResults.forEach(result => {
+                        addResultRow(resultsTable, result);
+                    });
+                }
+                
+                // Show table
+                tableContainer.style.display = 'block';
+            }
+            
+            // Helper function to add section header to table
+            function addSectionHeader(table, title) {
+                const row = document.createElement('tr');
+                row.className = 'table-primary';
+                row.innerHTML = `<td colspan="2" class="fw-bold">${title}</td>`;
+                table.appendChild(row);
+            }
+            
+            // Helper function to add result row to table
+            function addResultRow(table, result) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${result.period}</td>
+                    <td class="fw-bold">TZS ${formatNumber(result.total.toFixed(0))}</td>
+                `;
+                table.appendChild(row);
+            }
+            
+            // Helper function to format numbers with commas
+            function formatNumber(num) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            
+            // Initial calculation
+            calculateSavings();
         });
-        // Close navbar on mobile when link is clicked
-        const navbarToggler = document.querySelector('.navbar-toggler');
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-        if (navbarCollapse.classList.contains('show')) {
-          navbarToggler.click();
-        }
-      });
-    });
-
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', function() {
-      togglePopulationInput();
-    });
-  </script>
+    </script>
 </body>
 </html>
